@@ -2,7 +2,10 @@ build:
 	docker-compose build
 
 up: build
-	docker-compose up
+	echo "Starting in detached mode, then watching logs for 5 seconds"
+	docker-compose up -d
+	timeout 5 docker-compose logs -f -t || exit 0
+	echo "(Stopped watching logs after 5 seconds)"
 
 down:
 	docker-compose down
