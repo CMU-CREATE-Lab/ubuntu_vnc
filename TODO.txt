@@ -1,0 +1,22 @@
+Phase 2
+DONE Create README.md with how to run
+DONE auto-set UID from homedir
+DONE auto-set USER from user running up.sh
+git commit
+
+Phase 1
+DONE Install python 3.11
+DONE Install google-chrome
+DONE Set up ssh key for jump client
+DONE Autostart x server
+DONE Select xfce4 alternatives
+DONE Switch to docker-compose
+DONE Add up, down, build into Makefile
+DONE Set timezone correctly
+DONE Create rsargent user with same UID and GID
+DONE Create Makefile with common actions
+DONE Start vncserver with user
+DONE Open to 5920
+
+
+

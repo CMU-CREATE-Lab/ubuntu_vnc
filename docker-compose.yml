@@ -1,0 +1,34 @@
+# Specifies the version of Docker Compose file format
+version: '3.5'
+
+services:
+  ubuntu-vnc:
+    cap_add:
+      - SYS_ADMIN
+    build: ./ # Build context for image
+    image: rsargent/ubuntu-vnc:20.04
+    container_name: ubuntu-vnc-20.04
+    hostname: ubuntu-vnc # hostname inside container
+    restart: always # auto-restart on exit
+    shm_size: 1g # Size of /dev/shm.  Required for chrome to not crash?
+    # Environment variables, accessible by scripts and applications inside the container
+    #environment:
+    command: >
+      /bin/bash /etc/ubuntu_vnc/run_docker.sh $USER
+    # Exposes ports to the host machine
+    ports:
+      - "127.0.0.1:5920:5901" # VNC: publish container:5901 to host:5920 (locahost only)
+      #- "9003:3389" # host:3389 maps to container:3389 (RDP)
+      #- "2222:22"   # host:2222 maps to container:22 (SSH)
+    # Mounts host paths or named volumes, specified in the `volumes` section, into the container
+    volumes:
+      - ../ubuntu_vnc_homedir:/home/$USER
+      - ./etc_ubuntu_vnc:/etc/ubuntu_vnc
+      # - .secrets/users.list:/etc/users.list # Map host .secrets/users.list to container /etc/users.list
+      # - ssh:/etc/ssh/  # Uncomment to mount the `ssh` volume into /etc/ssh/ in the container
+      # - home/:/home/   # Uncomment to mount the `home` volume into /home/ in the container
+    
+# Defines the named volumes used in this docker-compose file
+#volumes:
+#  ssh:  # Named volume, can be used by services in the `volumes` section
+#  home: # Named volume, can be used by services in the `volumes` section
