@@ -1,6 +1,10 @@
 # Overview
 
-This is a docker container that runs Ubuntu with a VNC server.  The VNC server's user is the same as the user that runs the docker container, with homedir mapped to ../ubuntu_vnc_homedir
+This is a docker container that runs Ubuntu with a VNC server and Google Chrome.  The VNC server's user is the same as the user that runs the docker container, with homedir mapped to ../ubuntu_vnc_homedir
+
+The host's postgres server is mapped to the container's postgres directory, so that the container can access the host's postgres server.  This requires the host is ubuntu, or uses a similar directory structure for postgres.  This means you don't need to use a password to access the host's postgres server;  instead, you are automatically authenticated as the username
+
+The container runs with escalated privilege (cap_add: SYS_ADMIN) for Chrome sandboxing to run properly.  As such, this docker container should only be controlled by trusted users.
 
 ## To configure:
 

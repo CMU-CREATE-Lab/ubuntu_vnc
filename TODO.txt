@@ -1,8 +1,15 @@
+Phase 3
+DONE Install postgres utils, but not postgres server
+DONE Mount host postgres socket directory
+DONE Try postgres utils talking to host postgres
+DONE Install and run ssh server
+DONE git commit
+
 Phase 2
 DONE Create README.md with how to run
 DONE auto-set UID from homedir
 DONE auto-set USER from user running up.sh
-git commit
+DONE git commit
 
 Phase 1
 DONE Install python 3.11

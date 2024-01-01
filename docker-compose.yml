@@ -18,12 +18,12 @@ services:
     # Exposes ports to the host machine
     ports:
       - "127.0.0.1:5920:5901" # VNC: publish container:5901 to host:5920 (locahost only)
-      #- "9003:3389" # host:3389 maps to container:3389 (RDP)
-      #- "2222:22"   # host:2222 maps to container:22 (SSH)
+      - "127.0.0.1:6120:22" # SSH: publish container:22 to host:6120 (locahost only)
     # Mounts host paths or named volumes, specified in the `volumes` section, into the container
     volumes:
       - ../ubuntu_vnc_homedir:/home/$USER
       - ./etc_ubuntu_vnc:/etc/ubuntu_vnc
+      - /var/run/postgresql:/var/run/postgresql # Mount the host's postgresql socket into the container
       # - .secrets/users.list:/etc/users.list # Map host .secrets/users.list to container /etc/users.list
       # - ssh:/etc/ssh/  # Uncomment to mount the `ssh` volume into /etc/ssh/ in the container
       # - home/:/home/   # Uncomment to mount the `home` volume into /home/ in the container
