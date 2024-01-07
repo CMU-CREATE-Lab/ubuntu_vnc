@@ -20,6 +20,8 @@ df
 ls -l ${HOMEDIR}
 # Start tigervncserver.  This will detach and run in the background.
 sudo -u rsargent tigervncserver :1 -localhost no -xstartup dbus-run-session -- startxfce4
+# Disable screensaver and screen blanking.  Wait a minute for the X server to start up.
+sleep 60 && DISPLAY=:1 xset s off && DISPLAY=:1 xset s noblank &
 # Start sshd in the foreground, not detaching
 /usr/sbin/sshd -D
 

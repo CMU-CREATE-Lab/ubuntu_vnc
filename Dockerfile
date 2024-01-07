@@ -20,6 +20,8 @@ RUN update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.wrappe
 ENV TZ=America/New_York
 RUN mkdir /etc/secrets && chmod 700 /etc/secrets
 RUN mkdir /run/sshd && chmod 0755 /run/sshd # todo move this next to openssh install
+# Eventually move these up
+RUN apt-get install -y git
 EXPOSE 5901
 EXPOSE 22
 
